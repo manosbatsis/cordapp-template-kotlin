@@ -1,3 +1,7 @@
+
+This is a test case for issue https://github.com/corda/corda/issues/6227
+
+
 <p align="center">
   <img src="https://www.corda.net/wp-content/uploads/2016/11/fg005_corda_b.png" alt="Corda" width="500">
 </p>
