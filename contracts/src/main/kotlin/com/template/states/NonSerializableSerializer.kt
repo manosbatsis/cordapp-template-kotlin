@@ -2,8 +2,13 @@ package com.template.states
 
 import com.template.states.NonSerializableSerializer.Proxy
 import net.corda.core.serialization.SerializationCustomSerializer
+import net.corda.core.utilities.loggerFor
 
 class NonSerializableSerializer : SerializationCustomSerializer<NonSerializable, Proxy> {
+
+    companion object{
+        val logger = loggerFor<NonSerializableSerializer>()
+    }
     /**
      * This is the actual proxy class that is used as an intermediate representation
      * of the Example class
@@ -15,7 +20,10 @@ class NonSerializableSerializer : SerializationCustomSerializer<NonSerializable,
      * transpose it into that form, instantiating an instance of the Proxy object (it
      * is this class instance that will be serialized into the byte stream.
      */
-    override fun toProxy(obj: NonSerializable) = Proxy(obj.property)
+    override fun toProxy(obj: NonSerializable): Proxy {
+        logger.debug("NonSerializableSerializer toProxy")
+        return Proxy(property = obj.property)
+    }
 
     /**
      * This method is used during deserialization. The bytes will have been read
@@ -27,6 +35,7 @@ class NonSerializableSerializer : SerializationCustomSerializer<NonSerializable,
      * into a form expected by the construction method of Example.
      */
     override fun fromProxy(proxy: Proxy) : NonSerializable {
+        logger.debug("NonSerializableSerializer fromProxy")
         return NonSerializable(proxy.property)
     }
 }
