@@ -1,6 +1,6 @@
-package com.template.states
+package com.template.contracts
 
-import com.template.states.NonSerializableSerializer.Proxy
+import com.template.contracts.NonSerializableSerializer.Proxy
 import net.corda.core.serialization.SerializationCustomSerializer
 import net.corda.core.utilities.loggerFor
 
